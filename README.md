@@ -22,12 +22,17 @@ Unfortunately, I currently don't have the time to create a neural network for ev
 
 
 Some example plays: (Mission Number:Outcome[0 for fail, 1 for sucess])
+
 1:1 2:1 3:0  <- Possible Double Spy or Troll
+
 1:0          <-N00b player or unanticipated spy disruption efforts
+
 1:1 2:0      <- More or less a standard game.   Implies either mission one had a sleeper, or the new player was the spy.  Can be determined by voting pattern. 
 
 One full mission would look like this. (Mission number and outcome, final team and vote patterns, and possibly a triple array of proposed teams and votes) 
+
 1:1 [1, 2, 3] [1110010111] [[[7,8,9], [0100100011]], [[6,7,8], [0001011001]]]
+
 2:_ [a, b, c] [xxxxxxxxxxx] [[[1, 2, 3, 5], [1101000000]]]
 
 Missions, teams, and probability of minion-hood in development!
