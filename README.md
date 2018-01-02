@@ -13,7 +13,7 @@ Right now I'm adding snippet "plays" which can be taken into account, and adding
 Unfortunately, I currently don't have the time to create a neural network for every single permutation of play which analyses past games, but I might work on that over the summer with some of my peers. 
 
 
-Framework is laid out as below:
+#Framework is laid out as below:
   1. Each player is assigned a number 0-9, inclusive, with 0 being the user, 1 being the player directly to his/her left, etc.
   2. Votes will be a binary 0/1 system for reject/approve.  (One voting round looks like: 1100010101
   3. Mission Objects will consist of the players and return a boolean pass/fail, with both a prediction and an outcome.  
