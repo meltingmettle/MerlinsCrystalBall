@@ -2,8 +2,9 @@ If you'd like to contribute, some ideas are listed below.
 
 1.  Percival: take input for ambigous knowledge of Merlin/Morgana.  Account for their votes and determine Merlin from Morgana
 2. 7, 8, or 9 player game compatability. <- Fairly straightforward, but a bit of architectural work. 
-3. GUI: respect.  I'm currently not too good with front-end.
+3. GUI: 
 4. Comments/recommendations on plays, analysis, or ways to identify spies
 5. Accusation: Allow the user to manually accuse a player of being a spy, returning a probability that the player is a spy and calculating future games and missions as such
-
+6. Neural Network 
+7. Name-number assignments: Allow the user to input names instead of numbers, and map the names to the character numbers. 
 
