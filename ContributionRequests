@@ -7,4 +7,5 @@ If you'd like to contribute, some ideas are listed below.
 5. Accusation: Allow the user to manually accuse a player of being a spy, returning a probability that the player is a spy and calculating future games and missions as such
 6. Neural Network 
 7. Name-number assignments: Allow the user to input names instead of numbers, and map the names to the character numbers. 
-
+8. Android App (in the near future)
+9. Apple Phone compatibility
