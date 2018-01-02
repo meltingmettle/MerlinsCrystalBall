@@ -2,11 +2,11 @@
 A calculator for the popular social deduction game Avalon.  Input mission teams, player votes on key missions, and mission outcomes, and recieve a dynamic probability assesment of which players are malicious Minions of Mordred.
 
 An open source project with Tensorflow and supervised learning! 
-If you are unfamiliar with the game, linked below are the game and its instruction manual.
-https://www.amazon.com/Resistance-Avalon-Social-Deduction-Game/dp/B009SAAV0C
-http://upload.snakesandlattes.com/rules/r/ResistanceAvalon.pdf
+If you are unfamiliar with the game, linked below are the [game]https://www.amazon.com/Resistance-Avalon-Social-Deduction-Game/dp/B009SAAV0C and its [instruction manual]http://upload.snakesandlattes.com/rules/r/ResistanceAvalon.pdf.
 
-10 Player compatibility only.  For now, votes on propsed teams that don't pass are ignored, although they are a key part of the game.   Right now I'm adding snippet "plays" which can be taken into account, and adding objects for players, teams, and missions. Working on adding Troll-compensators and a a Percival portal. 
+
+10 Player compatibility only.  For now, votes on propsed teams that don't pass are ignored, although they are a key part of the game.   
+Right now I'm adding snippet "plays" which can be taken into account, and adding objects for players, teams, and missions. Working on adding Troll-compensators and a a Percival portal. 
 
 
 
@@ -14,13 +14,11 @@ Unfortunately, I currently don't have the time to create a neural network for ev
 
 
 Framework is laid out as below:
-  Each player is assigned a number 0-9, inclusive, with 0 being the user, 1 being the player directly to his/her left, etc.
-  Propsed teams
-  Votes will be a binary 0/1 system for reject/approve.  (One voting round looks like: 1100010101
-  Mission Objects will consist of the players and return a boolean pass/fail, with both a prediction and an outcome.  
-    A mission input would be (players, with captain first):  input: 34982  output: Success, Prediction: Success.
-     If the prediction is incorrect, the program will refactor accordingly, namely, noting that there was likely a spy/no spy on
-     the team. 
+  1. Each player is assigned a number 0-9, inclusive, with 0 being the user, 1 being the player directly to his/her left, etc.
+  2. Votes will be a binary 0/1 system for reject/approve.  (One voting round looks like: 1100010101
+  3. Mission Objects will consist of the players and return a boolean pass/fail, with both a prediction and an outcome.  
+    3a. A mission input would be (players, with captain first):  input: 34982  output: Success, Prediction: Success.
+     3b. If the prediction is incorrect, the program will refactor accordingly, namely, noting that there was likely a spy/no spy on the team. 
 
 
 Some example plays: (Mission Number:Outcome[0 for fail, 1 for sucess])
