@@ -16,15 +16,15 @@ Right now I'm adding snippet "plays" which can be taken into account, and adding
 Unfortunately, I currently don't have the time to create a neural network for every single permutation of play which analyses past games, but I might work on that over the summer with some of my peers. 
 
 
-#Framework is laid out as below:
+# Framework is laid out as below:
   1. Each player is assigned a number 0-9, inclusive, with 0 being the user, 1 being the player directly to his/her left, etc.
-  2. Votes will be a binary 0/1 system for reject/approve.  (One voting round looks like: 1100010101
+  2. Votes will be a binary 0/1 system for reject/approve.  One voting round is documented as an array as such: 1100010101
   3. Mission Objects will consist of the players and return a boolean pass/fail, with both a prediction and an outcome.  
     3a. A mission input would be (players, with captain first):  input: 34982  output: Success, Prediction: Success.
      3b. If the prediction is incorrect, the program will refactor accordingly, namely, noting that there was likely a spy/no spy on the team. 
 
 
-Some example plays: (Mission Number:Outcome[0 for fail, 1 for sucess])
+# Some example plays: (Mission Number:Outcome[0 for fail, 1 for sucess])
 
 1:1 2:1 3:0  <- Possible Double Spy or Troll
 
@@ -49,6 +49,6 @@ Also, pls ~~like, comment, and subscribe.~~ star, comment, and watch!
 -MeltingMettle
   
   
-  Contributions needed:
-  Percival, more plays/player analysis methods, GUI, player number variation
+# Contributions needed:
+Percival, more plays/player analysis methods, GUI, player number variation
   
