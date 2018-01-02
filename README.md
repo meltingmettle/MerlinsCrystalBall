@@ -2,8 +2,11 @@
 A calculator for the popular social deduction game Avalon.  Input mission teams, player votes on key missions, and mission outcomes, and recieve a dynamic probability assesment of which players are malicious Minions of Mordred.
 
 An open source project with Tensorflow and supervised learning! 
-If you are unfamiliar with the game, linked below are the [game]https://www.amazon.com/Resistance-Avalon-Social-Deduction-Game/dp/B009SAAV0C and its [instruction manual]http://upload.snakesandlattes.com/rules/r/ResistanceAvalon.pdf.
+If you are unfamiliar with the game, linked below are the game and its instruction manual. 
 
+http://upload.snakesandlattes.com/rules/r/ResistanceAvalon.pdf.
+
+https://www.amazon.com/Resistance-Avalon-Social-Deduction-Game/dp/B009SAAV0C 
 
 10 Player compatibility only.  For now, votes on propsed teams that don't pass are ignored, although they are a key part of the game.   
 Right now I'm adding snippet "plays" which can be taken into account, and adding objects for players, teams, and missions. Working on adding Troll-compensators and a a Percival portal. 
