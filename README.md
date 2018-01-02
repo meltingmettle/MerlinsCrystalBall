@@ -1,7 +1,9 @@
 # Merlin's Crystal Ball
 A calculator for the popular social deduction game Avalon.  Input mission teams, player votes on key missions, and mission outcomes, and recieve a dynamic probability assesment of which players are malicious Minions of Mordred.
 
-An open source project with Tensorflow and supervised learning! 
+An open source project with Tensorflow and supervised learning! The objective of this program is to help the Resistance win the 5th mission by analyzing the game and predicting the spies among the Loyal Servants of King Arthur. 
+
+
 If you are unfamiliar with the game, linked below are the game and its instruction manual. 
 
 http://upload.snakesandlattes.com/rules/r/ResistanceAvalon.pdf.
