@@ -1,4 +1,8 @@
-If you'd like to contribute, some ideas are listed below.
+
+I'm working on a diagram to help with understanding.  This would probably be a bunch cleaner in Java, but I opted for python to encourage open-sourcing from my students.
+
+
+If you'd like to contribute, some ideas are listed below.  If you have questions, feel free to shoot me a message.
 
 1.  Percival: take input for ambigous knowledge of Merlin/Morgana.  Account for their votes and determine Merlin from Morgana
 2. 7, 8, or 9 player game compatability. <- Fairly straightforward, but a bit of architectural work. 
