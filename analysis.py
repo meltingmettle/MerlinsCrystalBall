@@ -6,10 +6,12 @@
 #
 
 def badApprove(player, Mission):
-  if player_approvedmission && missionOutcome == 0:
+  if player_approvedmission() and missionOutcome == 0:  #If the player approved the mission and it failed
       player.suslevel += 1
-      if player not in Mission.Team and Mission.count != 4:
+      if player not in Mission.Team and Mission.count != 4:  #If the player approved without being on the mission.  
           player.suslevel +=1
-  
+  if Mission.captain == player.getnumber():         #A tad more suspicious if the player in question made the team
+      player.suslevel += 2
 
+#And so on and so forth.  After missions are run, analysis functions will study players and log their actions for future reference.
 #
