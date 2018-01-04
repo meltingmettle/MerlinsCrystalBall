@@ -1,13 +1,34 @@
 #import tensorflow as tf
 
+#@author MeltingMettle
+#Variables representing a number have no upper case (ie missionnumber)
+#Variables representing an array or other data structure (ie playerList)
 
-class Mission: 
+
+
+#Hello friends! Contributions welcome!
+
+#If you're one of my students, good luck! XD See what you can learn/understand/try and hit me up if you have any questions.
+
+class Mission:  #A Mission class to track the game progress in chunks. There will be between 3-5 of these.
     def __init__(self, missionnumber, players, votes, outcome = None, prediction = None):
         self.votes = votes
         self.players = []
         self.number = missionnumber
-        self.proposedteams = []
+        self.proposedTeams = []
+        self.outcome = None                 #Notice the type  changes between instantiation and assignment.  A big no-no in Java
         
+    def passed(self):
+        self.outcome = 1
+        Game.missionResults[Game.currentmission] = 1
+        
+
+    def failed(self):
+        self.outcome = 0
+        Game.missionResults[Game.currentmission] = 0
+        
+    def addProposedTeam(self, calvinism):  #Should add a double array with players and votes
+        self.proposedTeams.append(calvinism)
 
     def __str__(self):
         print("number:outcome, players, votes, failedvotes")
@@ -20,7 +41,7 @@ class Player:
         self.spyprobability = 44
         self.suslevel = 0
         self.missions = []
-        self.votingpattern = []
+        self.votingPattern = []
 
     def setname(self,name):
         self.name = name
@@ -39,22 +60,23 @@ class Player:
         return self.name
         
 class Game:
-
+    #TODO when does the game end?
     players = []                                                #Remember to reference this as Game.players
     for i in range(10):
         players.append(Player("Player" + str(i), i))
-
-    currentmission = 1                                          #Reference this as Game.currentmission. Remember what abstraction is?
-
-    missions = [None, None, None, None, None]
-    missionResults = [None, None, None, None]
+    currentmission = 1                                          #Reference this as Game.getCurrentMission(). Remember what abstraction is?
+    missionsCount = [None, None, None, None, None]
+    missionResults = [None, None, None, None, None]
+    
+    successmissions = 0
+    failmissions = 0
     captain = None
     
     
     def __init__(self):
-        count = int(input("How many players?"))
+        count = int(input("How many players?")) 
         #assert number below 10
-        af = str(input("autofill? yes or no?"))
+        af = str(input("autofill? yes or no? (All input must be in quotes for now))) 
         if af == "no":
             name0 = str(input("What's your name?"))
             Game.players[0].setname(name0)
@@ -64,9 +86,12 @@ class Game:
                 name = input("Who's sitting to his/her left?")
                 Game.players[i].setname(name)              
         captain = input("Who's making the first team? Number please!")
-        #Assert number below 10
+        #Assert number is between 0-9
         print(str(Game.players[captain].getname()) + " is making the first team!")
         round()
+
+    def getCurrentMission(self):
+        return currentmission
 
     def nextMission(self):
         Game.currentmission += 1
@@ -80,32 +105,56 @@ def round():
     #check which mission reject this is
     #assert mission has right amount of people
     #assert right number of votes
-
-    failedvotes = []
+    Game.currentmission = shield    #Mission index tracker to make code more readable
+    failedVotes = []
     team = input("Who's on this team? (lump number)")
+    #Take in votes and players on the team
     votes = input("Votes?")  #Track each player's vote for each team
     team = toArray(team)
+    #Begin the Mission and index the Game class's trackers. 
+    roundMission = Mission(shield, team, votes)
+    Game.missionsCount[shield] = roundMission
+
+    #Here's the tricky oart. Let's see if we can write each mission's result to the Mission class
+    #but also each player. (For later analysis) 
+    #Instead of analysing the whole game, it would be more efficient to analyze players one by one
+    #Instead of writing the entire game to file, let's try writing a player's profile and end loyalty
+    
+    def NSA(bigbrother): #Record ALL the actions!!
+        return None
+
+    def recordAction():  #Document a player's decisions this round.
+        return None
+
+    def recordToGame(teamAndVotes):  #Note what's going on for the round's Mission object
+        roundMission.addProposedTeam(teamAndVotes)
+        return None
+
+
+    #Now we continue with the actual game
     if passorfail(votes) > 5:
-        predictedOutcome = input("Pass or fail? 0 or 1?")
-        Game.missionResults.append(predictedOutcome)
-        missionstart = Mission(Game.currentmission, team, votes, predictedOutcome)
-        Game.missions[Game.currentmission] = missionstart
-        
+        #Save the mission result and update all the stuffs
+        missionresult = input("Pass or fail? 0 or 1?")
+        Game.missionResults.append(missionresult)
+        roundMission.passed()
         if Game.currentmission > 5:
             return gameEnd()
         else:
-            Game.nextMission
+            Game.nextMission()
     else:
-        #add votes to failed team log
-        print("Vote failed.  Make new team.")
-        failedvotes.append([team, votes])
+        roundMission.failed()
+        print("Vote failed.  Make new team.")  
+        recordToGame[team, votes])       #add votes to failed team log
         round()
+
 
 def last_hope(): #Call this iff it's the 5th mission. Will return a detailed game analysis which will point out the spies
     return "rip"
 
 def recognize(play):
-    return None #will recognize and return classic plays
+    #Will recognize and return classic plays
+    #using the anaylsis that YOU wrote and pushed into the repo ^-^
+    return None 
 
 
 def status():
@@ -113,29 +162,43 @@ def status():
     return None
 
 def passorfail(v):
-    total = 0
     total = sum(toArray(v))
-    approval = []
-    rejector = []
-    index = 0
-    while v > 0:
-        total += v % 10 
-        if v % 10 == 0:
-            rejector.append(Game.players[index].getname())
-        else:
-            approval.append(Game.players[index].getname())
-        v = v // 10
-    print(str(total) + " approves and " + "\n" + str(10 - total) + " rejections")
-    print(str(approval) + " approved the mission and " + "\n" + str(rejector) + "rejected.")
-    index = 0
+    print(str(total) + " approves and " + str(10-total) + "rejects")
     return total
+
+
+
+    #This got messier than US politics.  For kicks, see if you can try to figure out what I was trying to do
+    # total = 0
+    # total = sum(toArray(v))
+    # approval = []
+    # rejector = []
+    # index = 10
+    # counter = 0
+    # while counter < 10:
+    #     total += v % 10 
+    #     if v % 10 == 0:
+    #         rejector.append(Game.players[index].getname())
+    #     elif v % 10 == 1:
+    #         approval.append(Game.players[index].getname())
+    #     else:
+    #         print("Your vote don't matter mate")
+    #     v = v // 10
+    #     counter += 1
+    #     index -= 1
+    
+    # print(str(total) + " approves and " + "\n" + str(10 - total) + " rejections")
+    # print(str(approval) + " approved the mission and " + "\n" + str(rejector) + "rejected.")
+    # index = 0
+    # return total
 
 def investigate(player):
     print("Table of each player and their likelyhood of being a spy")
 
 def gameEnd():
     #Write results and data to a file
-    if sum(Game.missionResults) >=3:
+    #print everything for review
+    if sum(Game.missionResults) >= 3:
         print("Resistance wins!")
         print("\n")
         print("Hide yo merlin!")
@@ -144,6 +207,9 @@ def gameEnd():
         print("\n")
         print("dumpstered.")
     return None
+
+def writeToFile():
+    #Write the entire game to the rtf file for later analysis
 
 def toArray(x):
     result = []
