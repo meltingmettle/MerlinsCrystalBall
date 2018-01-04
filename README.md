@@ -1,8 +1,12 @@
 # Merlin's Crystal Ball
 A calculator for the popular social deduction game Avalon.  Input mission teams, player votes on key missions, and mission outcomes, and recieve a dynamic probability assesment of which players are malicious Minions of Mordred.
 
+In a game based on social deduction,  visual cues, deception, and unpredictability,  can a minions intent be revealed by careful objective analysis?
+
+
 An open source project with Tensorflow and supervised learning! The objective of this program is to help the Resistance win the 5th mission by analyzing the game and predicting the spies among the Loyal Servants of King Arthur. 
 
+Thanks to a larger percentage of Camelot GDP being devoted to R&D, His Magesty King Arthur's elite Praetorian Guard has developed a means of detecting and predicting spies, thus claiming victory for the forces of light and avoiding attempts on  Merlin's life.
 
 If you are unfamiliar with the game, linked below are the game and its instruction manual. 
 
@@ -14,8 +18,9 @@ https://www.amazon.com/Resistance-Avalon-Social-Deduction-Game/dp/B009SAAV0C
 Right now I'm adding snippet "plays" which can be taken into account, and adding objects for players, teams, and missions. Working on adding Troll-compensators and a a Percival portal. 
 
 
-
-Unfortunately, I currently don't have the time to create a neural network for every single permutation of play which analyses past games, but I might work on that over the summer with some of my peers. 
+With a neural network in progress, we are using a primitive means of analysis to discern patterns and predict future activity.
+Currently, analysis is performed via SusPoint™.  Every time any player makes a suspicious action, their SusLevel™ increases. 
+The current hypothesis is, by identifying enough plays, can we force spies to need to rack up an insurmountable number of points in order to claim victory?
 
 
 # Framework is laid out as below:
