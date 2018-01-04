@@ -6,7 +6,7 @@ In a game based on social deduction,  visual cues, deception, and unpredictabili
 
 An open source project with Tensorflow and supervised learning! The objective of this program is to help the Resistance win the 5th mission by analyzing the game and predicting the spies among the Loyal Servants of King Arthur. 
 
-Thanks to a larger percentage of Camelot GDP being devoted to R&D, His Magesty King Arthur's elite Praetorian Guard has developed a means of detecting and predicting spies, thus claiming victory for the forces of light and avoiding attempts on  Merlin's life.
+Thanks to a larger percentage of Camelot GDP being devoted to R&D, His Majesty King Arthur's elite Praetorian Guard has developed a means of detecting and predicting spies, thus claiming victory for the forces of light and avoiding attempts on  Merlin's life.
 
 If you are unfamiliar with the game, linked below are the game and its instruction manual. 
 
