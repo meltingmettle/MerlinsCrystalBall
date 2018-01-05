@@ -1,8 +1,14 @@
+Hello!
 
-I'm working on a diagram to help with understanding.  This would probably be a bunch cleaner in Java, but I opted for python to encourage open-sourcing from my students.
+I opted to use python to encourage open-sourcing from the shiny 61A alums.  
+If there's enough demand, I will do another webcast of me copying much of the framework onto Java for the students taking 61B next semester.
+
+For students: feel free to try any of these out.  Take a look around main.py and play around with it.  Add stuff or break stuff!
+Also, I expect all of you to create an analysis.py for review and 61B warm-up.  I plan to try to make a network out of all your analysis algorithms combined. :)
 
 
 If you'd like to contribute, some ideas are listed below.  If you have questions, feel free to shoot me a message.
+Check out the #Problem tags on main.py
 
 1.  Percival: take input for ambigous knowledge of Merlin/Morgana.  Account for their votes and determine Merlin from Morgana
 2. 7, 8, or 9 player game compatability. <- Fairly straightforward, but a bit of architectural work. 
