@@ -1,4 +1,4 @@
-Hello kid,
+Hello!
 
 Come to the webcast on Sunday if you're free! I hope that a bit of coding will get you back into the CS lifestyle-mindset. XD
 I've set up a lot of the problems so you can practice implementation, OOP, debugging, data-structuring, code comprehension, abstraction, and general problem solving. (Also to help you guys avoid potato-ing)
