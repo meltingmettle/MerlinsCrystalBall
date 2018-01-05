@@ -60,7 +60,7 @@ class Mission:                                              #A Mission class to 
         print("number:outcome, players, votes, failedvotes")
         return None
 
-class Player:
+class Player:                                               #The Player object.  Stores player metadata and name.
     def __init__(self, name, number):
         self.name = name
         self.number = number
@@ -89,7 +89,7 @@ class Player:
         print(self.name)
         return self.name
         
-class Game:
+class Game:                                                 #The Mainframe; Much of the data is stored in here.
     #Problem 2
     #TODO when does the game end?
     players = []                                                #Remember to reference this as Game.players
@@ -132,12 +132,12 @@ class Game:
 
 
 
-def nextMission():
+def nextMission():                                          #Little indexing helper function
     Game.currentmission += 1
     Game.captain += 1
     round()
 
-def round():
+def round():                                                #Tl;dr of data input for each mission
     #Problem 8: Some basic implementation! Implement a method of accounting for a double, or even triple fail on a mission.
     
     #Problem 3: Check inputs and display error without exiting program (Fix all the assert comments)
@@ -204,8 +204,6 @@ def round():
         return None
 
     nextMission()
-
-
 
 
 #Helper functions. Most of these are in progress.  
