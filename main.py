@@ -206,50 +206,14 @@ def round():
     nextMission()
 
 
-def last_hope(): #Call this iff it's the 5th mission. Will return a detailed game analysis which will point out the spies
-    return "rip"
-
-def recognize(play):
-    #Problem 4:  I expect you all to try something for this. :) Check out analysis.py.
-    #Will recognize and return classic plays
-    #using the anaylsis that YOU wrote and pushed into the repo ^-^
-    return None 
 
 
-def status():
-    print("Everything that's happened so far in an orderly and readable format")
-    return None
-
+#Helper functions. Most of these are in progress.  
 def passorfail(v):
     total = sum(v)
     print(str(total) + " approves and " + str(10-total) + " rejects")
     return total
 
-
-
-    #This got messier than US politics after President Washington.  For kicks, see if you can try to figure out what I was trying to do
-    # total = 0
-    # total = sum(toArray(v))
-    # approval = []
-    # rejector = []
-    # index = 10
-    # counter = 0
-    # while counter < 10:
-    #     total += v % 10 
-    #     if v % 10 == 0:
-    #         rejector.append(Game.players[index].getname())
-    #     elif v % 10 == 1:
-    #         approval.append(Game.players[index].getname())
-    #     else:
-    #         print("Your vote don't matter mate")
-    #     v = v // 10
-    #     counter += 1
-    #     index -= 1
-    
-    # print(str(total) + " approves and " + "\n" + str(10 - total) + " rejections")
-    # print(str(approval) + " approved the mission and " + "\n" + str(rejector) + "rejected.")
-    # index = 0
-    # return total
 def analyze():
     print("Knowledge is power! ")
     print("\n")  #NewLine
@@ -263,11 +227,6 @@ def analyze():
         print("Very well.  It's your funeral.")
     print("\n")  #NewLine
     return None
-
-
-
-def investigate(player):
-    print("Table of each player and their likelyhood of being a spy")
 
 def gameEnd():
     #Problem 5:    
@@ -287,10 +246,6 @@ def gameEnd():
         print("not sure if trolling.....")
     return None
 
-def writeToFile():
-    #Write the entire game to the rtf file for later analysis
-    return None
-
 def toArray(x):
     result = []
     votecount = len(str(x))
@@ -300,6 +255,27 @@ def toArray(x):
         votecount -= 1
     return list(reversed(result))
 
+#Some fun user options. Also in progress
+
+def last_hope(): #Analysis option. Call this iff it's the 5th mission. Will return a detailed game analysis which will point out the spies
+    return "rip"
+
+def recognize(play):
+    #Problem 4:  I expect you all to try something for this. :) Check out analysis.py.
+    #Will recognize and return classic plays
+    #using the anaylsis that YOU wrote and pushed into the repo ^-^
+    return None 
+
+def status():
+    print("Everything that's happened so far in an orderly and readable format")
+    return None
+
+def investigate(player):
+    print("Table of each player and their likelyhood of being a spy")
+
+def writeToFile():
+    #Write the entire game to the rtf file for later analysis
+    return None
 
 
 play = Game()
