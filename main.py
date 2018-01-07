@@ -18,19 +18,31 @@
 #Function is described in the README.md
 
 class Mission:                                              #A Mission class to track the game progress in chunks. There will be between 3-5 of these.
-    def __init__(self, missionnumber, players, votes, outcome = None, prediction = None):
+    def __init__(self, missionnumber, players = None, votes = None, outcome = None, prediction = None):
         self.votes = votes
-        self.players = []
+        self.players = []                                   #In this case, Mission.playes represets the team. :3 Game.players is all the players.  My bad, dog.  Will refactor when switch software
         self.number = missionnumber
         self.proposedTeams = []
         self.outcome = None                                 #Notice the type  changes between instantiation and assignment.  A big no-no in Java
-        
+        self.attemptsToMakeTeam = 1                         #Start this at index 1 because the first mission doesn't say what attempt
+
+
+    def getOutcome():
+        return self.outcome
+
+    def approvedTeam(self, team, votes):
+        self.players = team
+        self.votes = votes
+
+    def rejectedTeam(self, team, votes):
+        self.attemptsToMakeTeam += 1
+        self.proposedTeams.append([team, votes])
+
     def passed(self):
         self.outcome = 1
         Game.successmissions += 1
         Game.missionResults[Game.currentmission] = 1
         
-
     def failed(self):
         self.outcome = 0
         Game.failmissions += 1
@@ -40,6 +52,7 @@ class Mission:                                              #A Mission class to 
         self.proposedTeams.append(calvinism)
 
     def analyzeMission():
+        
         #Problem 1
 
         #Return all useful data from mission and print
@@ -54,7 +67,17 @@ class Mission:                                              #A Mission class to 
         
         #So [1,4,2,6] would become "Max made a team with Emmett, Amanda, Ethan, and Player6"
         #and [1,0,0,0,0,0,0,0,0,0] woud be "Max approved!  Emmett, Amanda, Janet, Ethan, Alex [...] rejected!"
+
+        #A slighty harder problem would be to link this up with analysis.py and note which players earned SusPoints 
         return None
+
+    def missionFinalAnalysisReturn(self):
+        #Return what is to be written to file
+        if self.outcome == None:
+            return None
+        metadata = [self.outcome, list(self.players), list(self.votes), self.attemptsToMakeTeam, list(self.proposedTeams)]
+        print(metadata)
+        return metadata
 
     def __str__(self):
         print("number:outcome, players, votes, failedvotes")
@@ -67,8 +90,9 @@ class Player:                                               #The Player object. 
         self.spyprobability = 44
         self.suslevel = 0
         self.missions = []
-        self.votingPattern = []
-        self.fullVoteAnalysis = []
+        self.votingPattern = []                             #Note which teams Player approved and which team player rejected
+        self.fullVoteAnalysis = []                          #
+        self.missionParticipation = []
 
     def setname(self,name):
         self.name = name
@@ -85,6 +109,11 @@ class Player:                                               #The Player object. 
     def investigate(self):
         #Print suslevel, along with actions from the entire game
         return None
+
+    def playerFinalAnalysisReturn():
+        #Return what is to be written to file
+        return None
+
     def __str__():
         print(self.name)
         return self.name
@@ -94,47 +123,74 @@ class Game:                                                 #The Mainframe; Much
     #TODO when does the game end?
     players = []                                                #Remember to reference this as Game.players
     playerCount = None
-    for i in range(10):
-        players.append(Player("Player" + str(i), i))
     currentmission = 1                                          #Reference this as Game.getCurrentMission(). Remember what abstraction is?
-    missionsCount = [None, None, None, None, None]
-    missionResults = [None, None, None, None, None]
-    teamSize = [3, 4, 4, 5, 5]                                  #For later use, with 5-9 players option.  
-                                                                #Later on, we'll fill this based on the input of how many players
+    missionsRejectedTeams = [None, None, None, None, None]
+    missionResults = [None, None, None, None, None]             #A tad inefficient, but it's useful later on.
+    missions = [None, None, None, None, None]
+    teamSize = [3, 4, 4, 5, 5]                                  #For later use, with 5-9 players option.  Later on, we'll fill this based on the input of how many players
     successmissions = 0
     failmissions = 0
     captain = None
-    
+    legit = False
+    spies = []
+    winners = None
     
     def __init__(self):
-        count = int(input("How many players?")) 
+        count = int(input("How many players? ")) 
         while count > 10 or count < 5:
-            count = int(input("How many players?? Please input number between 5-10")) 
+            count = int(input("How many players?? Please input number between 5-10 ")) 
         Game.playerCount = count
         #assert number below 10
-        af = str(input("autofill? yes or no? (All input must be in quotes for now)")) 
+        af = str(input("Autofill players? yes or no? (All input must be in quotes for now)")) 
         if af == "no":
-            name0 = str(input("What's your name?"))
+            name0 = str(input("What's your name? "))
             Game.players[0].setname(name0)
             name1 = str(input("Who's sitting to your left?"))
             Game.players[1].setname(name1)
             for i in range(2, count):
                 name = input("Who's sitting to his/her left?")
-                Game.players[i].setname(name)              
-        captain = input("Who's making the first team? Number please!")
+                Game.players[i].setname(name)  
+        else:
+            for i in range(10):
+                Game.players.append(Player("Player" + str(i), i))            
+        realGame = input("Is this an actual game? Specify 'actual': ")    #Avoid accidentally training network with invalid games
+        if realGame == "actual":
+            Game.legit = True
+
+        captain = input("Who's making the first team? Number please! ")
         Game.captain = captain
         #Assert number is between 0-9
-        print(str(Game.players[captain].getname()) + " is making the first team!")
+        print(str(Game.players[captain].getname()) + " is making the first team! ")
         round()
 
     def getCurrentMission(self):
-        return currentmission
+        return self.currentmission
+
+    def gameFinalAnalysisReturn():
+        #Return what is to be written to file
+        finalAnalysisList = [Game.winners, Game.currentmission, Game.spies]                                  #Format [winningTeam, totalMissions, spies, Mission Analyses]  Possibly add date/game tag later
+        for mission in Game.missions:
+            if mission != None:
+                finalAnalysisList.append(mission.missionFinalAnalysisReturn())
+        return None
 
 
+#If you're wondering why these are global functions and why the entire game is run off of class attributes of the "Game"
+#object, it's mainly because the program doesn't need to handle multiple games and thus we can set up the entire program
+#in a "waterfall" format. As a side effect, there's a large amount of abstraction and referencing between classes. 
+
+#Another note: this type of OOP-heavy program would be much much simpler and smoother in Java.
+#You'll see why in a few months. :) 
+
+#That being said, generally try to avoid this kind of setup. XD
 
 def nextMission():                                          #Little indexing helper function
+    Game.missions[Game.currentmission].missionFinalAnalysisReturn()
     Game.currentmission += 1
-    Game.captain += 1
+    if Game.captain == 9:
+            Game.captain += 1
+    else:
+        Game.captain = 0
     round()
 
 def round():                                                #Tl;dr of data input for each mission
@@ -143,7 +199,7 @@ def round():                                                #Tl;dr of data input
     #Problem 3: Check inputs and display error without exiting program (Fix all the assert comments)
     #Bonus if you can get python to intake strings without user needing to add quotes.
 
-
+    #Assert captain is the first person on the team
     #assert the team "leader" changed up by one
     #Assert game isn't over
     #assert no double players on the same team
@@ -151,26 +207,54 @@ def round():                                                #Tl;dr of data input
     #assert mission has right amount of people
     #assert right number of votes
     #assert the input is the right type.  (Hint: use type(x))
+            
+
     shield = Game.currentmission                               #Mission index tracker to make code more readable
-    failedVotes = []
     print("\n")  #NewLine
 
+
     print("We are on Mission #" + str(shield) + " which needs a team of " + str(Game.teamSize[shield - 1]))
+    print(str(Game.players[Game.captain].getname()) + " is making this team!")
+    print("\n")  #NewLine
+    print("\n")  #NewLine
     team = input("Who's on this team? (lump number)")
     team = toArray(team)
     print(str(Game.players[team[0]].getname()) + " made a team with "  + str([Game.players[p].getname() for p in team[1:]]))
+   
+   
     #Take in votes and players on the team
-    votes = input("Votes?")  #Track each player's vote for each team
-
-    while len(str(votes)) != Game.playerCount:                          #Example assertion
+    votes = input("Votes? y or n in quotes: ")  #Track each player's vote for each team
+    while len(votes) != Game.playerCount:
         votes = input("Votes? Please input the right number of votes.") 
-    votes = toArray(votes)
-    #Begin the Mission and index the Game class's trackers. 
-    roundMission = Mission(shield, team, votes)
-    Game.missionsCount[shield] = roundMission
-    
+    voteIndex = 0
+    votes = list(votes)
+    for p in votes:
+        if p == 'y':
+                votes[voteIndex] = 1
+        elif p == 'n':
+            votes[voteIndex] = 0
+        else: 
+            while votes[voteIndex] != 'y' and votes[voteIndex] != 'n':
+                print("What did " + Game.players[voteIndex].getname() + " vote? Wrong input. ")
+                votes[voteIndex] = input("'y' or 'n':")
+            if votes[voteIndex] == 'y':
+                votes[voteIndex] = 1
+            elif votes[voteIndex] == 'n':
+                votes[voteIndex] = 0
+        voteIndex += 1   
 
-    #Here's the tricky oart. Let's see if we can write each mission's result to the Mission class
+
+
+      #Begin the Mission and index the Game class's trackers. 
+    if Game.missions[Game.currentmission] == None:
+        roundMission = Mission(Game.currentmission)
+        Game.missions[Game.currentmission] = roundMission
+    else:
+        roundMission = Game.missions[Game.currentmission]
+
+
+
+    #Here's the tricky part. Let's see if we can write each mission's result to the Mission class
     #but also each player. (For later analysis) 
     #Instead of analysing the whole game, it would be more efficient to analyze players one by one
     #Instead of writing the entire game to file, let's try writing a player's profile and end loyalty
@@ -179,31 +263,52 @@ def round():                                                #Tl;dr of data input
         return None
 
     def recordAction(playernumber):         #Document a player's decisions this round.
-        Game.players[playernumber].s
+                                            #[playerVote, [team, team, team], [otherVotes], missionOutcome]
+                                            #[0/1, [1, 2, 3, 4], ['0','1','1,'1,'1...], -1/0/1] (-1 if the team is rejected)
+
+        Game.players[playernumber].recordPlayerAction(playernumber)
         return None
 
-    def recordToGame(teamAndVotes):         #Note what's going on for the round's Mission object
-        roundMission.addProposedTeam(teamAndVotes)
-        return None
+    def recordToGame(missionNumber, teamAndVotes):         #Note what's going on for the round's Mission object
+        missionsRejectedTeams[missionNumber] = teamAndVotes
 
     
     #Now we continue with the actual game
-    if passorfail(votes) > 5:
+    votetotal = passorfail(votes) 
+    if roundMission.attemptsToMakeTeam >= 4:
+        print("\n")  #NewLine
+        print("Team goes automatically!")
+        votetotal = 10
+
+    if votetotal > 5:
         #Save the mission result and update all the stuffs
         missionresult = input("Pass or fail? 0 or 1?")
-        Game.missionResults.append(missionresult)
-        roundMission.passed()
-        analyze()
-    
-    else:
-        roundMission.failed()
-        print("Vote failed.  Make new team.")  
-        recordToGame([team, votes])       #add votes to failed team log
-    if Game.successmissions >= 3 or Game.failmissions >= 3:
-        gameEnd()
-        return None
+        if missionresult != 0 and missionresult != 1:
+            missionresult = input("Pass or fail? 0 or 1? Please put in a legit response >:c")
 
-    nextMission()
+        roundMission.approvedTeam(team, votes)
+        Game.missionResults[shield] = missionresult
+        
+
+        if missionresult == 0:
+            roundMission.failed()
+        elif missionresult == 1:
+            roundMission.passed()
+
+        if Game.successmissions >= 3 or Game.failmissions >= 3:
+            gameEnd()
+            return None
+        
+        analyze()
+        nextMission()
+    else:
+        print("Vote failed.  Make new team.")   
+        print("\n")  #NewLine
+        print("\n")  #NewLine
+        print("This is vote attempt #" + str(Game.missions[shield].attemptsToMakeTeam + 1))
+        roundMission.rejectedTeam(team, votes)
+        round()
+
 
 
 #Helper functions. Most of these are in progress.  
@@ -233,16 +338,22 @@ def gameEnd():
     #I'll probably do this one myself but feel free if you want to learn stuff
     #Also, think of how to design the file so it  can be read and analyzed later!
     if Game.successmissions >= 3:
+        Game.winners = 1
         print("Resistance wins!")
         print("\n")
         print("Hide yo merlin!")
     elif Game.failmissions >= 3:
+        Game.winners = 0
         print("Spies win!")
         print("\n")
         print("dumpstered.")
     else:
         print("not sure if trolling.....")
+    print("\n")  #NewLine
+    spy = input("Who were the spies? (Lump number)")
+    Game.spies = toArray(spy)
     return None
+
 
 def toArray(x):
     result = []
@@ -257,6 +368,18 @@ def toArray(x):
 
 def last_hope(): #Analysis option. Call this iff it's the 5th mission. Will return a detailed game analysis which will point out the spies
     return "rip"
+
+def uniqueList(team):       
+    #Problem 9(?) Helper function! Use this to make sure that no player is listed as being on a team twice. 
+    #>>> uniqueList([3, 4, 5, 4])
+    #False
+    #>>> uniqueList([2, 9, 3, 4])
+    #True
+
+    #Later on, we'll do  
+    #if not uniqueList(proposedTeam):  
+    #      print("Please make a valid team!")
+    return None
 
 def recognize(play):
     #Problem 4:  I expect you all to try something for this. :) Check out analysis.py.
@@ -273,7 +396,12 @@ def investigate(player):
 
 def writeToFile():
     #Write the entire game to the rtf file for later analysis
-    return None
+    if Game.legit:
+        #Save all 10 player profiles, with player loyalty and full action log
+        #Save entire game record with spies tagged
+        return None
+    else:
+        return None
 
 
 play = Game()
