@@ -1,15 +1,23 @@
+Hello!
 
-I'm working on a diagram to help with understanding.  This would probably be a bunch cleaner in Java, but I opted for python to encourage open-sourcing from my students.
+I opted to use python to encourage open-sourcing from the shiny 61A alums.  
+If there's enough demand, I will do another webcast of me copying much of the framework onto Java for the students taking 61B next semester.
+
+For students: feel free to try any of these out.  Take a look around main.py and play around with it.  Add stuff or break stuff!
+Also, I expect all of you to create an analysis.py for review and 61B warm-up.  I plan to try to make a network out of all your analysis algorithms combined. :)
 
 
 If you'd like to contribute, some ideas are listed below.  If you have questions, feel free to shoot me a message.
 
-1.  Percival: take input for ambigous knowledge of Merlin/Morgana.  Account for their votes and determine Merlin from Morgana
-2. 7, 8, or 9 player game compatability. <- Fairly straightforward, but a bit of architectural work. 
-3. GUI: 
-4. Comments/recommendations on plays, analysis, or ways to identify spies
-5. Accusation: Allow the user to manually accuse a player of being a spy, returning a probability that the player is a spy and calculating future games and missions as such
-6. Neural Network 
-7. Name-number assignments: Allow the user to input names instead of numbers, and map the names to the character numbers. 
-8. Android App (in the near future)
-9. Apple Phone compatibility
+Check out the #Problem tags on main.py. I've set them up to be fairly straightforward, or at least what you'd find on a lab.
+
+These problems are slightly longer and more complex. 
+
+1. Percival Role support: take input for ambigous knowledge of Merlin/Morgana.  Account for their votes and determine Merlin from Morgana
+2. Player number options: Full support for 5,6,7,8, or 9 player games.  <- Fairly straightforward, but a bit of architectural work. 
+3. GUI: Graphical user interface.  Front-end isn't quite my thing as of now. 
+4. Accusation: Allow the user to manually accuse a player of being a spy, returning a probability that the player is a spy and calculating future games and missions as such
+5. Neural Network, using either metadata from games, or metadata from old player profiles
+6. Name-number assignments: Allow the user to input names instead of numbers, and map the names to the character numbers. (This is currently not an option mostly for speedy data input)
+7. Android App (in the near future)
+8. Apple Phone compatibility

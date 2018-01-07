@@ -1,6 +1,15 @@
-If you want to complain about the bad architecture, go ahead. I changed my mind several times in the design so it's a tad messier than I anticipated. :P
+Hello!
 
-I'll link a diagram for better understanding later on, if you prefer a visual breakdown.  :)
+Come to the webcast on Sunday if you're free! I hope that a bit of coding will get you back into the CS lifestyle-mindset. XD
+I've set up a lot of the problems so you can practice implementation, OOP, debugging, data-structuring, code comprehension, abstraction, and general problem solving. (Also to help you guys avoid potato-ing)
+
+I hope this will also give you an idea of why/what 61B.  If you make a contribution or two, Project 1 should be a breeze. :)
+If you're not sure how to start, I'll cover how to use github and how to push/pull/add/commit/use terminal on Sunday. (You'll need to know this later on)
+
+Let me know if you're stuck or have any questions! I'd love to help you!
+-Emmett Ling
+
+Crudely-drawn environmental diagram: https://drive.google.com/file/d/1SY5mLkqdEXX0b6QFNpmRfYuoAh7tHsK6/view
 
 Amanda:  Hopefully knowing the game will help you draw connections.  Try writing some analysis functions based on logic you use in-game.  I have confidence in your ability, kid.
 
@@ -22,3 +31,10 @@ just kidding.  take a look around! I'd love to see what you can come up with! :D
 
 
 Good luck! Enroll in CSM! Let me know if you have any questions! Super proud of you guys and looking forward to the next semester! :) 
+
+
+
+
+
+
+If you want to complain about the bad architecture, go ahead. I changed the framework several times in the design so it's a tad messier than I anticipated. :P
