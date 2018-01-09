@@ -33,8 +33,3 @@ just kidding.  take a look around! I'd love to see what you can come up with! :D
 Good luck! Enroll in CSM! Let me know if you have any questions! Super proud of you guys and looking forward to the next semester! :) 
 
 
-
-
-
-
-If you want to complain about the bad architecture, go ahead. I changed the framework several times in the design so it's a tad messier than I anticipated. :P
