@@ -91,11 +91,15 @@ class Player:                                               #The Player object. 
         self.suslevel = 0
         self.missions = []
         self.votingPattern = []                             #Note which teams Player approved and which team player rejected
-        self.fullVoteAnalysis = []                          #
+        self.fullVoteAnalysis = []                          
         self.missionParticipation = []
+        self.spy = 1
 
     def setname(self,name):
         self.name = name
+        
+    def wasSpy():
+        self.spy = 0
     
     def recordPlayerAction(sus):
         return None
@@ -110,7 +114,7 @@ class Player:                                               #The Player object. 
         #Print suslevel, along with actions from the entire game
         return None
 
-    def playerFinalAnalysisReturn():
+    def playerFinalAnalysisReturn():    #Format [0/1 spy/resistance, [participated missions], [
         #Return what is to be written to file
         return None
 
@@ -165,8 +169,11 @@ class Game:                                                 #The Mainframe; Much
 
     def getCurrentMission(self):
         return self.currentmission
-
+        
+    #Also return the player objects of the spies
+   
     def gameFinalAnalysisReturn():
+        #Format:  [winningteam, [spies], total missions, [all missions], [all players], string date and game summary]
         #Return what is to be written to file
         finalAnalysisList = [Game.winners, Game.currentmission, Game.spies]                                  #Format [winningTeam, totalMissions, spies, Mission Analyses]  Possibly add date/game tag later
         for mission in Game.missions:
@@ -352,6 +359,8 @@ def gameEnd():
     print("\n")  #NewLine
     spy = input("Who were the spies? (Lump number)")
     Game.spies = toArray(spy)
+    for s in Game.spies:
+        Game.players[s].wasSpy()
     return None
 
 
