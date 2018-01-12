@@ -97,7 +97,10 @@ class Player:                                               #The Player object. 
 
     def setname(self,name):
         self.name = name
-        
+    
+    def recordIntel(self, intel):
+        self.fullVoteAnalysis.append(intel)
+      
     def wasSpy():
         self.spy = 0
     
@@ -114,7 +117,7 @@ class Player:                                               #The Player object. 
         #Print suslevel, along with actions from the entire game
         return None
 
-    def playerFinalAnalysisReturn():    #Format [0/1 spy/resistance, [participated missions], [
+    def playerFinalAnalysisReturn():    #Format [0/1 spy/resistance, [participated missions], [mission outcomes], [fullvote analysis]]
         #Return what is to be written to file
         return None
 
@@ -266,14 +269,15 @@ def round():                                                #Tl;dr of data input
     #Instead of analysing the whole game, it would be more efficient to analyze players one by one
     #Instead of writing the entire game to file, let's try writing a player's profile and end loyalty
     
-    def NSA(bigbrother):                    #Record ALL the actions!!
+    def NSA(bigbrother, outcome):                    #Record ALL the actions!!
+        for p in team:
+            recordAction(p, outcome)
         return None
 
-    def recordAction(playernumber):         #Document a player's decisions this round.
-                                            #[playerVote, [team, team, team], [otherVotes], missionOutcome]
-                                            #[0/1, [1, 2, 3, 4], ['0','1','1,'1,'1...], -1/0/1] (-1 if the team is rejected)
-
-        Game.players[playernumber].recordPlayerAction(playernumber)
+    def recordAction(playernumber, outcome):         #Document a player's decisions this round.
+        Game.players[playernumber].recordIntel([votes[playernumber], shield, team, votes, outcome])
+            #[playerVote, mission, [team, team, team, team, team], [otherVotes], missionOutcome]
+                                            #[0/1, mission,[1, 2, 3, 4, 5], ['0','1','1,'1,'1...], -1/0/1] (-1 if the team is rejected)
         return None
 
     def recordToGame(missionNumber, teamAndVotes):         #Note what's going on for the round's Mission object
@@ -360,7 +364,8 @@ def gameEnd():
     spy = input("Who were the spies? (Lump number)")
     Game.spies = toArray(spy)
     for s in Game.spies:
-        Game.players[s].wasSpy()
+        Game.players[s].wasSpy()        
+    writeToFile()
     return None
 
 
