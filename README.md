@@ -1,7 +1,7 @@
 # Merlin's Crystal Ball
-A calculator for the popular social deduction game Avalon.  Input mission teams, player votes on key missions, and mission outcomes, and recieve a dynamic probability assesment of which players are malicious Minions of Mordred.
+A calculator for the popular social deduction game Avalon.  Input mission teams, player votes on key missions, and mission outcomes, and receive a dynamic probability assessment of which players are malicious Minions of Mordred.
 
-In a game based on social deduction,  visual cues, deception, and unpredictability,  can a minions intent be revealed by careful objective analysis?
+In a game based on social deduction,  visual cues, deception, and unpredictability,  can a minion's intent be revealed by careful objective analysis?
 
 
 An open source project with Tensorflow and supervised learning! The objective of this program is to help the Resistance win the 5th mission by analyzing the game and predicting the spies among the Loyal Servants of King Arthur. 
