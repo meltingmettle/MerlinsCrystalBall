@@ -12,7 +12,7 @@
 #If you're one of my students, good luck! XD See what you can learn/understand/try and hit me up if you have any questions.
 #With only 5 possible missions and 10 players, it was possible to hard-code the system, 
 
-#For a diagram of the overally design, check out this link:
+#For a diagram of the overall design, check out this link:
 #https://drive.google.com/file/d/1SY5mLkqdEXX0b6QFNpmRfYuoAh7tHsK6/view?usp=sharing
 
 #Function is described in the README.md
@@ -20,7 +20,7 @@
 class Mission:                                              #A Mission class to track the game progress in chunks. There will be between 3-5 of these.
     def __init__(self, missionnumber, players = None, votes = None, outcome = None, prediction = None):
         self.votes = votes
-        self.players = []                                   #In this case, Mission.playes represets the team. :3 Game.players is all the players.  My bad, dog.  Will refactor when switch software
+        self.players = []                                   #In this case, Mission.playes represents the team. :3 Game.players is all the players.  My bad, dog.  Will refactor when switch software
         self.number = missionnumber
         self.proposedTeams = []
         self.outcome = None                                 #Notice the type  changes between instantiation and assignment.  A big no-no in Java
@@ -66,9 +66,9 @@ class Mission:                                              #A Mission class to 
         
         
         #So [1,4,2,6] would become "Max made a team with Emmett, Amanda, Ethan, and Player6"
-        #and [1,0,0,0,0,0,0,0,0,0] woud be "Max approved!  Emmett, Amanda, Janet, Ethan, Alex [...] rejected!"
+        #and [1,0,0,0,0,0,0,0,0,0] would be "Max approved!  Emmett, Amanda, Janet, Ethan, Alex, JC, Wilson [...] rejected!"
 
-        #A slighty harder problem would be to link this up with analysis.py and note which players earned SusPoints 
+        #A slightly harder problem would be to link this up with analysis.py and note which players earned SusPoints 
         return None
 
     def missionFinalAnalysisReturn(self):
@@ -373,8 +373,8 @@ def toArray(x):
     result = []
     votecount = len(str(x))
     while votecount > 0:
-        result.append(x%10)
-        x = x//10
+        result.append(x % 10)
+        x = x // 10
         votecount -= 1
     return list(reversed(result))
 
