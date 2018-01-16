@@ -15,7 +15,7 @@ http://upload.snakesandlattes.com/rules/r/ResistanceAvalon.pdf.
 https://www.amazon.com/Resistance-Avalon-Social-Deduction-Game/dp/B009SAAV0C 
 
 10 Player compatibility only. For now, votes on propsed teams that don't pass are ignored, although they are a key part of the game.   
-Right now I'm adding snippet "plays" which can be taken into account, and adding objects for players, teams, and missions. Working on adding Troll-compensators and a a Percival portal.
+Right now I'm adding snippet "plays" which can be taken into account, and adding objects for players, teams, and missions. Working on adding Troll-compensators and a Percival portal.
 
 
 With a neural network in progress, we are using a primitive means of analysis to discern patterns and predict future activity.
@@ -35,9 +35,9 @@ The current hypothesis is, by identifying enough plays, can we force spies to ne
 
 1:1 2:1 3:0  <- Possible Double Spy or Troll
 
-1:0          <-N00b player or unanticipated spy disruption efforts
+1:0          <- N00b player or unanticipated spy disruption efforts
 
-1:1 2:0      <- More or less a standard game. Implies either mission one had a sleeper, or the new player was the spy.  Can be determined by voting pattern. 
+1:1 2:0      <- More or less a standard game. Implies either mission one had a sleeper, or the new player was the spy. Can be determined by voting pattern. 
 
 One full mission would look like this. (Mission number and outcome, final team and vote patterns, and possibly a triple array of proposed teams and votes) 
 
