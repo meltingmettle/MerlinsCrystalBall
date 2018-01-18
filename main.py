@@ -277,10 +277,13 @@ def round():                                                #Tl;dr of data input
     def recordAction(playernumber, outcome):         #Document a player's decisions this round.
             #[playerVote, mission, [team, team, team, team, team], [otherVotes], missionOutcome]
                                             #[0/1, mission,[1, 2, 3, 4, 5], ['0','1','1,'1,'1...], -1/0/1] (-1 if the team is rejected)
-        return Game.players[playernumber].recordIntel([votes[playernumber], shield, team, votes, outcome])
+        Game.players[playernumber].recordIntel([votes[playernumber], shield, team, votes, outcome])
+        print("Record action" + str([votes[playernumber], shield, team, votes, outcome]))
 
     def recordToGame(missionNumber, teamAndVotes):         #Note what's going on for the round's Mission object
         missionsRejectedTeams[missionNumber] = teamAndVotes
+        print("recorded to game")
+        print(teamAndVotes)
 
     
     #Now we continue with the actual game
@@ -304,7 +307,10 @@ def round():                                                #Tl;dr of data input
             roundMission.failed()
         elif missionresult == 1:
             roundMission.passed()
-
+            
+        NSA(team, outcome)
+        recordToGame(shield, [team, votes])
+        
         if Game.successmissions >= 3 or Game.failmissions >= 3:
             gameEnd()
             return None
@@ -363,7 +369,8 @@ def gameEnd():
     spy = input("Who were the spies? (Lump number)")
     Game.spies = toArray(spy)
     for s in Game.spies:
-        Game.players[s].wasSpy()        
+        Game.players[s].wasSpy()      
+    print(Game.missionsRejectedTeams)
     writeToFile()
     return None
 
