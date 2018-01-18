@@ -131,7 +131,7 @@ class Game:                                                 #The Mainframe; Much
     players = []                                                #Remember to reference this as Game.players
     playerCount = None
     currentmission = 1                                          #Reference this as Game.getCurrentMission(). Remember what abstraction is?
-    missionsRejectedTeams = [None, None, None, None, None]
+    missionsRejectedTeams = [[], [], [], [], []]
     missionResults = [None, None, None, None, None]             #A tad inefficient, but it's useful later on.
     missions = [None, None, None, None, None]
     teamSize = [3, 4, 4, 5, 5]                                  #For later use, with 5-9 players option.  Later on, we'll fill this based on the input of how many players
@@ -172,6 +172,10 @@ class Game:                                                 #The Mainframe; Much
 
     def getCurrentMission(self):
         return self.currentmission
+    
+    def finalGoogleReturn(endgame):
+        return endgame
+        
         
     #Also return the player objects of the spies
    
@@ -281,7 +285,7 @@ def round():                                                #Tl;dr of data input
         print("Record action" + str([votes[playernumber], shield, team, votes, outcome]))
 
     def recordToGame(missionNumber, teamAndVotes):         #Note what's going on for the round's Mission object
-        missionsRejectedTeams[missionNumber] = teamAndVotes
+        missionsRejectedTeams[missionNumber].append(teamAndVotes)
         print("recorded to game")
         print(teamAndVotes)
 
