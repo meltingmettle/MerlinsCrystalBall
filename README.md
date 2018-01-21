@@ -47,15 +47,11 @@ One full mission would look like this. (Mission number and outcome, final team a
 
 Missions, teams, and probability of minion-hood in development!
   
-  
-
-Please feel free to comment your favorite plays/determinators of a player's spy-ness below!
-Also, pls ~~like, comment, and subscribe.~~ star, comment, and watch! 
-
+ 
+ 
+The program as a whole will return one mega-array of game, mission, and player data.
+Currently working on using the Google Spreadsheet API to allow the program to save data onto a spreadsheet.
 
 -MeltingMettle
-  
-  
-# Contributions needed:
-Percival, more plays/player analysis methods, GUI, player number variation
+
   
