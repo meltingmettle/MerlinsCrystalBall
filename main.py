@@ -189,14 +189,7 @@ class Game:                                                 #The Mainframe; Much
         return None
 
 
-#If you're wondering why these are global functions and why the entire game is run off of class attributes of the "Game"
-#object, it's mainly because the program doesn't need to handle multiple games and thus we can set up the entire program
-#in a "waterfall" format. As a side effect, there's a large amount of abstraction and referencing between classes. 
 
-#Another note: this type of OOP-heavy program would be much much simpler and smoother in Java.
-#You'll see why in a few months. :) 
-
-#That being said, generally try to avoid this kind of setup. XD
 
 def nextMission():                                          #Little indexing helper function
     Game.missions[Game.currentmission].missionFinalAnalysisReturn()
@@ -256,8 +249,11 @@ def round():                                                #Tl;dr of data input
             elif votes[voteIndex] == 'n':
                 votes[voteIndex] = 0
         voteIndex += 1   
-
-
+    
+    
+    for i in Players:
+        analyze(i)
+        print(str(i.name) +"'s sus-level is " + str(p.suslevel)) 
 
       #Begin the Mission and index the Game class's trackers. 
     if Game.missions[Game.currentmission] == None:
@@ -318,8 +314,7 @@ def round():                                                #Tl;dr of data input
         if Game.successmissions >= 3 or Game.failmissions >= 3:
             gameEnd()
             return None
-        
-        analyze()
+
         nextMission()
     else:
         print("Vote failed.  Make new team.")   
@@ -337,6 +332,8 @@ def passorfail(v):
     print(str(total) + " approves and " + str(10-total) + " rejects")
     return total
 
+#Change this to an individual analyze. 
+"""
 def analyze():
     print("Knowledge is power! ")
     print("\n")  #NewLine
@@ -350,6 +347,7 @@ def analyze():
         print("Very well.  It's your funeral.")
     print("\n")  #NewLine
     return None
+"""
 
 def gameEnd():
     #Problem 5:    
