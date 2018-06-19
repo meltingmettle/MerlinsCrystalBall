@@ -174,11 +174,15 @@ class Game:                                                 #The Mainframe; Much
         return self.currentmission
     
     def finalGoogleReturn(endgame):
-        return endgame
-        
-        
-    #Also return the player objects of the spies
-   
+        result = [[],[]] 
+        #[[Missions (includes outcome, team and proposed teams)], [Player Profiles]]
+        for m in missions:
+            result[0].append(m)
+        for p in players:
+            result[1].append(p)
+        return result
+
+ """  
     def gameFinalAnalysisReturn():
         #Format:  [winningteam, [spies], total missions, [all missions], [all players], string date and game summary]
         #Return what is to be written to file
@@ -187,9 +191,7 @@ class Game:                                                 #The Mainframe; Much
             if mission != None:
                 finalAnalysisList.append(mission.missionFinalAnalysisReturn())
         return None
-
-
-
+"""
 
 def nextMission():                                          #Little indexing helper function
     Game.missions[Game.currentmission].missionFinalAnalysisReturn()
@@ -261,7 +263,6 @@ def round():                                                #Tl;dr of data input
         Game.missions[Game.currentmission] = roundMission
     else:
         roundMission = Game.missions[Game.currentmission]
-
 
 
     #Here's the tricky part. Let's see if we can write each mission's result to the Mission class
@@ -358,13 +359,9 @@ def gameEnd():
     if Game.successmissions >= 3:
         Game.winners = 1
         print("Resistance wins!")
-        print("\n")
-        print("Hide yo merlin!")
     elif Game.failmissions >= 3:
         Game.winners = 0
         print("Spies win!")
-        print("\n")
-        print("dumpstered.")
     else:
         print("not sure if trolling.....")
     print("\n")  #NewLine
@@ -388,8 +385,6 @@ def toArray(x):
 
 #Some fun user options. Also in progress
 
-def last_hope(): #Analysis option. Call this iff it's the 5th mission. Will return a detailed game analysis which will point out the spies
-    return "rip"
 
 def uniqueList(team):       
     #Problem 9(?) Helper function! Use this to make sure that no player is listed as being on a team twice. 
@@ -413,9 +408,6 @@ def status():
     print("Everything that's happened so far in an orderly and readable format")
     return None
 
-def investigate(player):
-    print("Table of each player and their likelyhood of being a spy")
-
 def writeToFile():
     #Write the entire game to the rtf file for later analysis
     if Game.legit:
@@ -434,8 +426,3 @@ play = Game()
 #Problem 7: Learn how to create a neural network using TensorFlow! 
 #I'm working on this too. This is a really interesting challenge if you're interested!
 
-
-#How to tell if someone's a spy:
-#Mission fails
-#votes
-#votes on mission passes/fails
